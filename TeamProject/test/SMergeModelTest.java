@@ -5,7 +5,6 @@ import org.junit.Test;
 
 import model.SMergeModel;
 
-
 public class SMergeModelTest {
 	private SMergeModel model = new SMergeModel();
 
