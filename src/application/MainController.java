@@ -1,5 +1,5 @@
 package application;
-
+//fffd
 
 import java.io.File;
 import java.net.URL;
@@ -100,7 +100,7 @@ public class MainController implements Initializable {
 		StringBuilder leftTxt = null;
 		
 		/*
-		 * titlePane_L ¿¡¼­ text area ¿¡ ÀÖ´Â °ª ¹ÝÈ¯ÇØ¼­ leftTxt¿¡ ³Ö¾îÁÖ±â (ÇüÁÖ)
+		 * titlePane_L ï¿½ï¿½ï¿½ï¿½ text area ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ø¼ï¿½ leftTxtï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½Ö±ï¿½ (ï¿½ï¿½ï¿½ï¿½)
 		 */
 		
 		model.leftSave(leftTxt);
@@ -114,7 +114,7 @@ public class MainController implements Initializable {
 		StringBuilder rightTxt = null;
 		
 		/*
-		 * titlePane_R ¿¡¼­ text area ¿¡ ÀÖ´Â °ª ¹ÝÈ¯ÇØ¼­ rightTxt¿¡ ³Ö¾îÁÖ±â(ÇüÁÖ) 
+		 * titlePane_R ï¿½ï¿½ï¿½ï¿½ text area ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ø¼ï¿½ rightTxtï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½Ö±ï¿½(ï¿½ï¿½ï¿½ï¿½) 
 		 */
 		
 		model.rightSave(rightTxt);
