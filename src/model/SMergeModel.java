@@ -1,18 +1,20 @@
-package application;
+package model;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 
 
 public class SMergeModel {
-	String leftPath;			//�쇊履� �솕硫� �뙆�씪�쓽 Path媛� �떞源�		
-	String rightPath;			//�삤瑜몄そ �솕硫� �뙆�씪�쓽 Path媛� �떞源�
-	StringBuilder leftTxt;		//�쇊履� �솕硫댁쓽 �뀓�뒪�듃媛� �떞源�
-	StringBuilder rightTxt;		//�삤瑜몄そ �솕硫댁쓽 �뀓�뒪�듃媛� �떞源�
-	File leftFile;				//�쇊履� �뙆�씪 援ъ“泥�
-	File rightFile;				//�삤瑜몄そ �뙆�씪 援ъ“泥�
+	String leftPath;			//왼쪽 화면 파일의 Path가 담김	
+	String rightPath;			//오른쪽 화면 파일의 Path가 담김
+	StringBuilder leftTxt;		//왼쪽 화면의 텍스트가 담김
+	StringBuilder rightTxt;		//오른쪽 화면의 텍스트가 담
+	File leftFile;				//오른쪽 파일 구조체
+	File rightFile;				//왼쪽 파일 구조체
 	
 	public String getleftPath(){return leftPath;}
 	public String getrightPath(){return rightPath;}
@@ -39,6 +41,18 @@ public class SMergeModel {
 	public void leftSave(StringBuilder leftTxt){
 		this.leftTxt = leftTxt;
 		
+		try{
+			FileWriter l_writer = new FileWriter(leftFile);// 파일 객체를 먼겨야함? 아니면 파일 패스를 넘겨야함?
+		                                                   // 패스가 바뀔 경우 파일 패스를 이용해야 할듯?
+			l_writer.write(leftTxt.toString()); // 윈도우 기반 메모장에서는 개항이 안됨, 개행문자를  /r/n로 해야 텍스트내의 개행문자가 메모장에 적용됨 ( 파일 로드 할때 개행문자 코드를 바꾸면 될듯)
+			
+			l_writer.close();
+		}catch(FileNotFoundException e){
+			e.printStackTrace();
+		
+		}catch(IOException e){
+			e.printStackTrace();
+		}
 		/*
 		 * leftFile에다가 leftTxt를 새로 써주세요(준홍)
 		 * fileWriter 이용(다른 함수여도 상관은 없음)
@@ -49,6 +63,18 @@ public class SMergeModel {
 	public void rightSave(StringBuilder rightTxt){
 		this.rightTxt = rightTxt;
 		
+		try{
+			FileWriter r_writer = new FileWriter(rightFile);// 파일 객체를 먼겨야함? 아니면 파일 패스를 넘겨야함?
+		                                                   // 패스가 바뀔 경우 파일 패스를 이용해야 할듯?
+			r_writer.write(rightTxt.toString()); // 윈도우 기반 메모장에서는 개항이 안됨, 개행문자를  /r/n로 해야 텍스트내의 개행문자가 메모장에 적용됨 ( 파일 로드 할때 개행문자 코드를 바꾸면 될듯)
+			
+			r_writer.close();
+		}catch(FileNotFoundException e){
+			e.printStackTrace();
+		
+		}catch(IOException e){
+			e.printStackTrace();	
+		}
 		/*
 		 * rightFile에다가 rightTxt를 새로 써주세요 (준홍)
 		 * fileWriter 이용(다른 함수여도 상관은 없음)

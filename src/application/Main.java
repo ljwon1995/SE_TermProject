@@ -1,5 +1,6 @@
 package application;
 	
+import controller.MainController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -15,7 +16,7 @@ public class Main extends Application {
 
 		try {
 			
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("View.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/View.fxml"));
 			Parent root = (Parent)loader.load();
 
 		
@@ -23,7 +24,6 @@ public class Main extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.show();
 
-			MainController controller = (MainController)loader.getController();
 			
 		}
 		catch(Exception e) {

@@ -1,9 +1,13 @@
-package application;
-//fffd
+package controller;
+
 
 import java.io.File;
+
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
+
+import com.sun.javafx.collections.MappingChange.Map;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,11 +15,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.MapValueFactory;
 import javafx.scene.image.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
+import model.SMergeModel;
+import view.*;
+
 
 public class MainController implements Initializable {
 
@@ -23,8 +31,9 @@ public class MainController implements Initializable {
 	private SMergeModel model = new SMergeModel();
 	
 	@FXML
-	private ListView<String> sss;
-	
+	private TableView textArea;
+	@FXML
+	private TableColumn<Map, String> textArea_L, textArea_R;
 	
 	@FXML
 	private ImageView btnEdit_L, btnEdit_R;
@@ -33,28 +42,17 @@ public class MainController implements Initializable {
 	private ImageView btnOpen_L, btnOpen_R;
 	
 	@FXML
-	private TextArea textArea_L, textArea_R;
-	
-	@FXML
-	private TitledPane titledPane_L, titledPane_R;
-	
-	@FXML
 	public void edit_L()
 	{
-		textArea_L.requestFocus();
 		textArea_L.setEditable(!textArea_L.isEditable());
+		
 	}
 	
 	@FXML
 	public void edit_R()
 	{
-		ObservableList<String> items = FXCollections.observableArrayList("S", "SS", "SSSS");
-		
-		sss.setItems(items);
-	
-		
-		textArea_R.requestFocus();
 		textArea_R.setEditable(!textArea_R.isEditable());
+	
 	}
 	@FXML
 	public void open_L(){
@@ -63,8 +61,7 @@ public class MainController implements Initializable {
 		FileChooser fc = new FileChooser();
 		try{
 			file = fc.showOpenDialog(null);
-			titledPane_L.setText(file.getAbsolutePath());
-			titledPane_L.setDisable(false);
+			textArea_L.setText(file.getAbsolutePath());
 			model.setleftFile(file);
 			model.setleftPath(file.getAbsolutePath());
 			model.leftLoad();
@@ -82,8 +79,7 @@ public class MainController implements Initializable {
 		FileChooser fc = new FileChooser();
 		try{
 			file = fc.showOpenDialog(null);
-			titledPane_R.setText(file.getAbsolutePath());
-			titledPane_R.setDisable(false);
+			textArea_R.setText(file.getAbsolutePath());
 			model.setrightFile(file);
 			model.setrightPath(file.getAbsolutePath());
 			model.rightLoad();
@@ -97,27 +93,12 @@ public class MainController implements Initializable {
 	@FXML
 	public void save_L()
 	{
-		StringBuilder leftTxt = null;
-		
-		/*
-		 * titlePane_L ���� text area �� �ִ� �� ��ȯ�ؼ� leftTxt�� �־��ֱ� (����)
-		 */
-		
-		model.leftSave(leftTxt);
-		
 		
 	}
 	
 	@FXML
 	public void save_R()
 	{
-		StringBuilder rightTxt = null;
-		
-		/*
-		 * titlePane_R ���� text area �� �ִ� �� ��ȯ�ؼ� rightTxt�� �־��ֱ�(����) 
-		 */
-		
-		model.rightSave(rightTxt);
 	}
 	@FXML
 	public void save_All()
@@ -128,6 +109,18 @@ public class MainController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-	}
+		}
+	/*
+	
+	private ObservableList<Map> generateDataInMap(String[] left, String[] right, int[] difference){
+		int max = difference.length;
+		ObservableList<Map> allData = FXCollections.observableArrayList();
+		
+		for(int i = 0; i < max ; i++)
+		{
+				
+		
+		}
+	}*/
 	
 }
